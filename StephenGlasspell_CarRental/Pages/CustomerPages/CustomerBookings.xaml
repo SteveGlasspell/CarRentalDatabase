@@ -1,0 +1,42 @@
+﻿<Page x:Class="StephenGlasspell_CarRental.CustomerBookings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StephenGlasspell_CarRental"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CustomerBookings" Style="{StaticResource SubMenuPage}">
+
+    <Grid Background="Beige">
+        <StackPanel Orientation="Vertical">
+
+            <StackPanel Style="{StaticResource SubMenuRow}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="IconCustomerMain" Text="🕴" Style="{StaticResource SubMenuIcon}"/>
+                    <TextBlock x:Name="pageCustomerBooking" Text="Customer Bookings" Style="{StaticResource HeaderLabel}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                   
+                    <Button Name="btnNewBooking" Content="New Booking" ToolTip="Create New Booking" Height="30" Margin="30,0,30,0" Click="btnNewBooking_Click"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Name="spHeaderRow" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Visible">
+                <TextBlock Text="Customer" Foreground="DarkRed" FontStyle="Italic" FontWeight="Bold" FontSize="16" Margin="10,0,10,0"/>
+                <TextBlock Text="Vehicle" Foreground="DarkRed" FontStyle="Italic" FontWeight="Bold" FontSize="16" Margin="210,0,10,0"/>
+                <TextBlock Text="Dates" Foreground="DarkRed" FontStyle="Italic" FontWeight="Bold" FontSize="16" Margin="190,0,10,0"/>
+                <TextBlock Text="Collected?" Foreground="DarkRed" FontStyle="Italic" FontWeight="Bold" FontSize="16" Margin="110,0,10,0"/>
+            </StackPanel>
+
+            <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" Height="400">
+                <StackPanel Name="spResultsPanel" Background="Bisque" Orientation="Vertical" CanVerticallyScroll="True">
+
+                </StackPanel>
+            </ScrollViewer>
+
+            
+            
+
+        </StackPanel>
+    </Grid>
+</Page>

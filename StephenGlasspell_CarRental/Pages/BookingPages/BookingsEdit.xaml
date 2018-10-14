@@ -1,0 +1,236 @@
+﻿<Page x:Class="StephenGlasspell_CarRental.BookingsEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StephenGlasspell_CarRental"
+      mc:Ignorable="d" 
+     
+      Title="BookingsEdit" Style="{StaticResource SubMenuPage}">
+
+    <Grid Background="Beige">
+        <TextBlock Text="Edit Booking" Style="{StaticResource HeaderLabel}"/>
+
+        <ScrollViewer  CanContentScroll="True" VerticalScrollBarVisibility="Auto" Margin="50">
+            <StackPanel Name="MainStackPanel"  Orientation="Horizontal"  CanVerticallyScroll="True" >
+
+
+                <StackPanel HorizontalAlignment="Right" Width="600">
+
+                    <TextBlock Name="txtCustomerName" FontSize="18"/>
+                    <Button Name="btnGoToCustomerEdit" Content="Go to Customer Details" Width="150" HorizontalAlignment="Left" Margin="30,0,30,0" Click="btnGoToCustomerEdit_Click"/>
+                    
+
+                    <Expander Name="expDates" Header="Dates" IsExpanded="True" Style="{StaticResource TableExpander}"  >
+
+                        <StackPanel>
+                            <StackPanel Visibility="Collapsed">
+                                <TextBox Name="txtScheduledHireBeginDateTime"/>
+                                <TextBox Name="txtScheduledHireReturnDateTime"/>
+                                <TextBox Name="txtActualHireBeginDateTime"/>
+                                <TextBox Name="txtActualHireReturnDateTime"/>
+                                <TextBlock Name="txtScheduledHireBeginDateTimeSuccess"/>
+                                <TextBlock Name="txtScheduledHireReturnDateTimeSuccess"/>
+                                <TextBlock Name="txtActualHireBeginDateTimeSuccess"/>
+                                <TextBlock Name="txtActualHireReturnDateTimeSuccess"/>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Collection Date" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn }">
+                                    <DatePicker Name="dpCollection" Style="{StaticResource TableDatePicker}"  SelectedDateChanged="selectionChanged"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCollectionDateSuccess" HorizontalAlignment="Left"   Text=""  FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Time" Style="{StaticResource TableLabel}" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}" Orientation="Horizontal">
+                                    <ComboBox FontSize="16" Name="cmbCollectionHour" Width="70" SelectionChanged="selectionChanged">
+                                        <ComboBoxItem Content="Hour" IsEnabled="False" IsSelected="True"/>
+                                        <ComboBoxItem Content="08"/>
+                                        <ComboBoxItem Content="09"/>
+                                        <ComboBoxItem Content="10"/>
+                                        <ComboBoxItem Content="11"/>
+                                        <ComboBoxItem Content="12"/>
+                                        <ComboBoxItem Content="13"/>
+                                        <ComboBoxItem Content="14"/>
+                                        <ComboBoxItem Content="15"/>
+                                        <ComboBoxItem Content="16"/>
+                                        <ComboBoxItem Content="17"/>
+                                        <ComboBoxItem Content="18"/>
+                                        <ComboBoxItem Content="19"/>
+                                        <ComboBoxItem Content="20"/>
+                                        <ComboBoxItem Content="21"/>
+
+                                    </ComboBox>
+                                    <ComboBox FontSize="16" Name="cmbCollectionMinute" Width="100" SelectionChanged="selectionChanged">
+                                        <ComboBoxItem Content="Minute" IsEnabled="False" IsSelected="True"/>
+                                        <ComboBoxItem Content="00"/>
+                                        <ComboBoxItem Content="15"/>
+                                        <ComboBoxItem Content="30"/>
+                                        <ComboBoxItem Content="45"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCollectionTimeSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Return Date" Style="{StaticResource TableLabel}" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <DatePicker Name="dpReturn" Style="{StaticResource TableDatePicker}" SelectedDateChanged="selectionChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtReturnDateSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Time" Style="{StaticResource TableLabel}" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}" Orientation="Horizontal">
+                                    <ComboBox FontSize="16" Name="cmbReturnHour" Width="70" SelectionChanged="selectionChanged">
+                                        <ComboBoxItem Content="Hour" IsEnabled="False" IsSelected="True"/>
+
+                                        <ComboBoxItem Content="08"/>
+                                        <ComboBoxItem Content="09"/>
+                                        <ComboBoxItem Content="10"/>
+                                        <ComboBoxItem Content="11"/>
+                                        <ComboBoxItem Content="12"/>
+                                        <ComboBoxItem Content="13"/>
+                                        <ComboBoxItem Content="14"/>
+                                        <ComboBoxItem Content="15"/>
+                                        <ComboBoxItem Content="16"/>
+                                        <ComboBoxItem Content="17"/>
+                                        <ComboBoxItem Content="18"/>
+                                        <ComboBoxItem Content="19"/>
+                                        <ComboBoxItem Content="20"/>
+                                        <ComboBoxItem Content="21"/>
+
+                                    </ComboBox>
+                                    <ComboBox FontSize="16" Name="cmbReturnMinute" Width="100" SelectionChanged="selectionChanged">
+                                        <ComboBoxItem Content="Minute" IsEnabled="False" IsSelected="True"/>
+                                        <ComboBoxItem Content="00"/>
+                                        <ComboBoxItem Content="15"/>
+                                        <ComboBoxItem Content="30"/>
+                                        <ComboBoxItem Content="45"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtReturnTimeSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+
+
+                        </StackPanel>
+                    </Expander>
+                    <Expander Name="expVehicleSelection" Header="Vehicle Selection" IsExpanded="True" Style="{StaticResource TableExpander}">
+                        <StackPanel>
+                            <ListBox Name="lstVehiclesAvailable" Width="550" Height="auto" HorizontalAlignment="Left" FontSize="18" ScrollViewer.CanContentScroll="True" SelectionChanged="lstVehiclesAvailable_SelectionChanged">
+                                <ListBoxItem Content="Select your dates and times to see the available vehicles."/>
+                            </ListBox>
+                            <TextBlock FontSize="10"/>
+                            <Button Name="btnShowAailableVehicles" Content="Show All Available Vehicles" Width="300" FontSize="18" Click="btnShowAailableVehicles_Click"/>
+                        </StackPanel>
+                    </Expander>
+                    <Expander Name="expVehicleDetails" Header="Vehicle Details"  Style="{StaticResource TableExpander}">
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Odometer Reading (Pre Hire)" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn }">
+                                    <TextBox Name="txtOdometerReadingPreHire" Style="{StaticResource TableTexBox}"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtOdometerReadingPreHireSuccess" HorizontalAlignment="Left"   Text=""  FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Odometer Reading (Post Hire)" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn }">
+                                    <TextBox Name="txtOdometerReadingPostHire" Style="{StaticResource TableTexBox}"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtOdometerReadingPostHireSuccess" HorizontalAlignment="Left"   Text=""  FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Expander>
+                    <Expander Name="expPaymentDetails" Header="Payment Details" Style="{StaticResource TableExpander}">
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Daily Rate" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn }">
+                                    <TextBox Name="txtDailyRate" Style="{StaticResource TableTexBox}"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtDailyRateSuccess" HorizontalAlignment="Left"   Text=""  FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Total Charge" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn }">
+                                    <TextBox Name="txtTotalCharge" Style="{StaticResource TableTexBox}"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtTotalChargeSuccess" HorizontalAlignment="Left"   Text=""  FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Payment Status" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn }">
+                                    <TextBox Name="txtPaymentStatus" Style="{StaticResource TableTexBox}"/>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtPaymentStatusSuccess" HorizontalAlignment="Left"   Text=""  FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </Expander>
+                    <StackPanel Orientation="Horizontal" Height="auto">
+                    <Button Name="btnSave" Content="Update Details" Width="200" Style="{StaticResource TableButton}" Click="btnSave_Click"/>
+                    <Button Name="btnCancelBooking" Visibility="Collapsed" Content="Cancel Booking" Width="200" Style="{StaticResource TableButton}" Click="btnCancelBooking_Click"/>
+                    <Button Name="btnMakePayment" Visibility="Collapsed" Content="Make Payment" Width="200" Style="{StaticResource TableButton}" Click="btnMakePayment_Click"/>
+                    <Button Name="btnSignOut" Visibility="Collapsed" Content="Sign Out Vehicle" Width="200" Style="{StaticResource TableButton}" Click="btnSignOut_Click"/>
+                    <Button Name="btnSignIn" Visibility="Collapsed" Content="Sign In Vehicle" Width="200" Style="{StaticResource TableButton}" Click="btnSignIn_Click"/>
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel Width="200" Orientation="Vertical">
+                    <Image Name="imgCustomerImage" Width="200"/>
+
+                </StackPanel>
+
+            </StackPanel>
+        </ScrollViewer>
+
+
+    </Grid>
+</Page>

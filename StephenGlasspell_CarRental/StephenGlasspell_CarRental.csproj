@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D72E0CD-9AF1-4FE4-982D-ADE4A77A8E59}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StephenGlasspell_CarRental</RootNamespace>
+    <AssemblyName>StephenGlasspell_CarRental</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Device">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WebEye.Controls.Wpf.WebCameraControl, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebEye.Controls.Wpf.WebCameraControl.1.0.3\lib\net40\WebEye.Controls.Wpf.WebCameraControl.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Pages\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Audio.cs" />
+    <Compile Include="Pages\BookingPages\BookingCreatedSuccess.xaml.cs">
+      <DependentUpon>BookingCreatedSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingsList.xaml.cs">
+      <DependentUpon>BookingsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingUpdateSuccess.xaml.cs">
+      <DependentUpon>BookingUpdateSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CalendarPages\CalendarMonth.xaml.cs">
+      <DependentUpon>CalendarMonth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Camera.cs" />
+    <Compile Include="Pages\CommonTasksPages\CommonTasksSidePanel.xaml.cs">
+      <DependentUpon>CommonTasksSidePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CommonTasksPages\CommonTasksSplashPage.xaml.cs">
+      <DependentUpon>CommonTasksSplashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomerPages\CustomerBookings.xaml.cs">
+      <DependentUpon>CustomerBookings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomerPages\CustomerList.xaml.cs">
+      <DependentUpon>CustomerList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomerPages\CustomerUpdateSuccess.xaml.cs">
+      <DependentUpon>CustomerUpdateSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Database.cs" />
+    <Compile Include="Classes\DataDelegate.cs" />
+    <Compile Include="Classes\DataValidator.cs" />
+    <Compile Include="Classes\DummyDataGenerator.cs" />
+    <Compile Include="Pages\EmployeePages\EmployeesMain.xaml.cs">
+      <DependentUpon>EmployeesMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FleetPages\FleetList.xaml.cs">
+      <DependentUpon>FleetList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\FormField.cs" />
+    <Compile Include="Classes\Printer.cs" />
+    <Compile Include="Classes\Scanner.cs" />
+    <Compile Include="Pages\ServicePages\ServiceBookingSuccess.xaml.cs">
+      <DependentUpon>ServiceBookingSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServicePages\ServiceEdit.xaml.cs">
+      <DependentUpon>ServiceEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServicePages\ServiceHistory.xaml.cs">
+      <DependentUpon>ServiceHistory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServicePages\ServiceMain.xaml.cs">
+      <DependentUpon>ServiceMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServicePages\ServiceNew.xaml.cs">
+      <DependentUpon>ServiceNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FleetPages\VehicleUpdateSuccess.xaml.cs">
+      <DependentUpon>VehicleUpdateSuccess.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BookingPages\BookingCreatedSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BookingPages\BookingsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BookingPages\BookingsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BookingPages\BookingsMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BookingPages\BookingsNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BookingPages\BookingUpdateSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CalendarPages\CalendarMonth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CommonTasksPages\CommonTasks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CommonTasksPages\CommonTasksSidePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CommonTasksPages\CommonTasksSplashPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomerPages\CustomerBookings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomerPages\CustomerList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomerPages\CustomersEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomerPages\CustomersMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomerPages\CustomersNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CustomerPages\CustomerUpdateSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EmployeePages\EmployeesMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FleetPages\FleetEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FleetPages\FleetList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FleetPages\FleetMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FleetPages\FleetNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingsEdit.xaml.cs">
+      <DependentUpon>BookingsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingsMain.xaml.cs">
+      <DependentUpon>BookingsMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookingPages\BookingsNew.xaml.cs">
+      <DependentUpon>BookingsNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CommonTasksPages\CommonTasks.xaml.cs">
+      <DependentUpon>CommonTasks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomerPages\CustomersEdit.xaml.cs">
+      <DependentUpon>CustomersEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomerPages\CustomersMain.xaml.cs">
+      <DependentUpon>CustomersMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\CustomerPages\CustomersNew.xaml.cs">
+      <DependentUpon>CustomersNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FleetPages\FleetEdit.xaml.cs">
+      <DependentUpon>FleetEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FleetPages\FleetMain.xaml.cs">
+      <DependentUpon>FleetMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FleetPages\FleetNew.xaml.cs">
+      <DependentUpon>FleetNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\ServicePages\ServiceBookingSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServicePages\ServiceEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServicePages\ServiceHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServicePages\ServiceMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ServicePages\ServiceNew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FleetPages\VehicleUpdateSuccess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\VehicleImages\AppImages\login_splash_original.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\VehicleImages\AppImages\Glass-Prestige-FullSize-Logo.png" />
+    <Resource Include="Assets\VehicleImages\AppImages\Glass-Prestige-Small-Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\VehicleImages\AppImages\mercedesgullwing.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\VehicleImages\AppImages\mercedesgullwingred.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SpeechLib">
+      <Guid>{D3C4A7F2-7D27-4332-B41F-593D71E16DB1}</Guid>
+      <VersionMajor>11</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\audio\Fail.wav" />
+    <Content Include="Assets\audio\PhotographComplete.wav" />
+    <Content Include="Assets\audio\StartApplication.wav" />
+    <Content Include="Assets\audio\WaitForPhotograph.wav" />
+    <Resource Include="Assets\CustomerImages\female-01.jpg" />
+    <Resource Include="Assets\CustomerImages\female-02.jpg" />
+    <Resource Include="Assets\CustomerImages\female-03.jpg" />
+    <Resource Include="Assets\CustomerImages\female-04.jpg" />
+    <Resource Include="Assets\CustomerImages\male-01.jpg" />
+    <Resource Include="Assets\CustomerImages\male-02.jpg" />
+    <Resource Include="Assets\CustomerImages\male-03.jpg" />
+    <Resource Include="Assets\CustomerImages\male-04.jpg" />
+    <Resource Include="Assets\VehicleImages\AC\AC-Cobra\AC-Cobra-01.jpg" />
+    <Resource Include="Assets\VehicleImages\Mercedes\Mercedes-C-Class\Mercedes-C-Class-01.jpg" />
+    <Resource Include="Assets\VehicleImages\MG\MG-Roadster\MG-Roadster-01.jpg" />
+    <Resource Include="Assets\VehicleImages\Audi\Audi-TT\Audi-TT-01.jpg" />
+    <Resource Include="Assets\VehicleImages\Lotus\Lotus-Esprit\Lotus-Esprit-01.jpg" />
+    <Resource Include="Assets\VehicleImages\RobinHood\RobinHood-01.jpg" />
+    <Resource Include="Assets\VehicleImages\Jaguar\Jaguar-XJ\Jaguar-XJ-08.jpg" />
+    <Resource Include="Assets\VehicleImages\Morgan\Morgan-Aero8\Morgan-Aero8-01.jpg" />
+    <Resource Include="Assets\blank_avatar.png" />
+    <Resource Include="Assets\VehicleImages\AppImages\Glass-Prestige-Logo-small.png" />
+    <Resource Include="Assets\VehicleImages\BMW\BMW-X6\BMW-X6-01.jpg" />
+    <Resource Include="Assets\VehicleImages\Lotus\Lotus-Exige\Lotus-Exige-01.jpg" />
+    <Resource Include="Assets\VehicleImages\Lotus\Lotus-Exige\Lotus-Exige-02.jpg" />
+    <Resource Include="Assets\VehicleImages\Mercedes\Mercedes-AMG-GTS\Mercedes-AMG-GT-01.jpg" />
+    <Resource Include="Assets\VehicleImages\Mercedes\Mercedes-AMG-GTS\Mercedes-AMG-GT-10.jpg" />
+    <Resource Include="Assets\VehicleImages\Porsche\Porsche-718\porsche-718-07.jpg" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

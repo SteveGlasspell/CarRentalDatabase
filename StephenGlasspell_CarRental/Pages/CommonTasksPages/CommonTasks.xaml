@@ -1,0 +1,80 @@
+﻿<Window x:Class="StephenGlasspell_CarRental.CommonTasks"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StephenGlasspell_CarRental"
+        mc:Ignorable="d"
+        Title="Common Tasks" Height="900" Width="1400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize" ShowInTaskbar="False" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" Closing="Window_Closing">
+    <Grid Background="white">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Name="frmCommonTasksMainFrame" NavigationUIVisibility="Automatic" ScrollViewer.CanContentScroll="True" BorderBrush="Gold" BorderThickness="2"/>
+            <Frame Name="frmCommonTasksSideFrame" Grid.Column="1" BorderBrush="Gold" BorderThickness="2"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="btnCustomers" Grid.Column="0"  Style="{StaticResource CommonTasksButtonMain}" Click="btnCustomers_Click"  >
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Name ="txtBtnCustomerIcon" Text="🕴" Style="{StaticResource BigButtonIcon}"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Customers" Style="{StaticResource BigButtonText}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Button Name="btnBookings" Grid.Column="1"  Style="{StaticResource CommonTasksButtonMain}" Click="btnBookings_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Name ="txtBtnBookingsIcon" Text="📝" Style="{StaticResource BigButtonIcon}"/>
+                        <TextBlock Text="Bookings" Style="{StaticResource BigButtonText}"/>
+                    </StackPanel>
+                    
+                </StackPanel>
+            </Button>
+            <Button Name="btnFleet" Grid.Column="2"  Style="{StaticResource CommonTasksButtonMain}" Click="btnFleet_Click">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Name ="txtBtnVehiclesIcon" Text="🚘" Style="{StaticResource BigButtonIcon}"/>
+                        <TextBlock Text="Vehicles" Style="{StaticResource BigButtonText}"/>
+                    </StackPanel>
+             
+                </StackPanel>
+            </Button>
+            <Button Name="btnEmployees" Grid.Column="3"  Style="{StaticResource CommonTasksButtonMain}" Click="btnEmployees_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <TextBlock Name ="txtBtnEmployeesIcon" Text="😍" Style="{StaticResource BigButtonIcon}"/>
+                        <TextBlock Text="Employees" Style="{StaticResource BigButtonText}"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Center">
+                        
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+
+
+    </Grid>
+</Window>

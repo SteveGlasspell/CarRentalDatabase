@@ -1,0 +1,584 @@
+﻿<Page x:Class="StephenGlasspell_CarRental.CustomersNew"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StephenGlasspell_CarRental"
+     
+      mc:Ignorable="d" 
+      
+      Title="CustomersNew" Style="{StaticResource SubMenuPage}" d:DesignWidth="933.5" >
+
+
+
+    <Grid Background="Beige" Margin="0,10,0,0">
+
+
+        <TextBlock Text="New Customer" Style="{StaticResource HeaderLabel}"/>
+
+
+        <ScrollViewer  CanContentScroll="True" VerticalScrollBarVisibility="Auto" Margin="50,50,0,0">
+            <StackPanel Name="MainStackPanel"  Orientation="Horizontal"  CanVerticallyScroll="True" >
+
+
+                <StackPanel HorizontalAlignment="Right" Width="550">
+
+
+                    <Expander Name="expIdentity" Header="Identity" IsExpanded="True" Style="{StaticResource TableExpander}"  >
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Title" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn }">
+                                    <ComboBox  Name="cmbTitle" Style="{StaticResource TableComboBox}" SelectionChanged="formInputChanged"  >
+                                        <ComboBoxItem Content="Choose" IsEnabled="False" IsSelected="True"/>
+                                        <ComboBoxItem Name="Mr" Content="Mr."/>
+                                        <ComboBoxItem Name="Mrs" Content="Mrs."/>
+                                        <ComboBoxItem Name="Miss" Content="Miss."/>
+                                        <ComboBoxItem Name="Ms" Content="Ms."/>
+                                        <ComboBoxItem Name="Dr" Content="Dr."/>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtTitleSuccess" HorizontalAlignment="Left"   Text=""  FontSize="16"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="First Name" Style="{StaticResource TableLabel}" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtFirstName" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtFirstNameSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Middle Name(s)" Style="{StaticResource TableLabel}" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtMiddleName" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtMiddleNameSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Last Name" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtLastName" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtLastNameSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <Line Height="1" Margin="0,20,0,10" Visibility="Visible"></Line>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock  Text="Date of Birth" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <DatePicker Name="dpDateOfBirth" Style="{StaticResource TableDatePicker}" SelectedDateChanged="formInputChanged"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtDateOfBirthSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Expander>
+                    <Expander Name="expContactDetails" Header="Contact Details" Style="{StaticResource TableExpander}">
+                        <StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="House Number"  Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtHouseNumber" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtHouseNoSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock  Text="Street" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtStreet" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtStreetNameSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Suburb" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtSuburb" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtSuburbSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="City" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtCity" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCitySuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Postcode" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtPostcode" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtPostCodeSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="State" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <ComboBox Name="cmbState" Style="{StaticResource TableComboBox}" SelectionChanged="formInputChanged" >
+                                        <ComboBoxItem Content="Choose" IsEnabled="false" IsSelected="True"/>
+                                        <ComboBoxItem Content="ACT" />
+                                        <ComboBoxItem Content="NSW" />
+                                        <ComboBoxItem Content="NT" />
+                                        <ComboBoxItem Content="QLD" />
+                                        <ComboBoxItem Content="SA" />
+                                        <ComboBoxItem Content="TAS" />
+                                        <ComboBoxItem Content="VIC" />
+                                        <ComboBoxItem Content="WA" />
+
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtStateSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <Line Height="1" Margin="0,20,0,10" Visibility="Visible"></Line>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Phone" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtPhone" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtPhoneSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Email" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtEmail" Width="200" FontSize="12" VerticalContentAlignment="Center" Height="24" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtEmailSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Expander>
+                    <Expander Name="expDrivingLicense" Header="Driving License Details"  Style="{StaticResource TableExpander}">
+                        <StackPanel>
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="License Number" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtDrivingLicenseNumber" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtLicenseNumberSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Issuing Country" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <ComboBox Name="cmbDrivingLicenseCountry" Style="{StaticResource TableComboBox}" SelectionChanged="formInputChanged" >
+                                        <ComboBoxItem Content="Choose" IsEnabled="False" IsSelected="True"/>
+                                        <ComboBoxItem Content="Afghanistan"/>
+                                        <ComboBoxItem Content="Albania"/>
+                                        <ComboBoxItem Content="Algeria"/>
+                                        <ComboBoxItem Content="Andorra"/>
+                                        <ComboBoxItem Content="Angola"/>
+                                        <ComboBoxItem Content="Antigua and Barbuda"/>
+                                        <ComboBoxItem Content="Argentina"/>
+                                        <ComboBoxItem Content="Armenia"/>
+                                        <ComboBoxItem Content="Australia"/>
+                                        <ComboBoxItem Content="Austria"/>
+                                        <ComboBoxItem Content="Azerbaijan"/>
+                                        <ComboBoxItem Content="The Bahamas"/>
+                                        <ComboBoxItem Content="Bahrain"/>
+                                        <ComboBoxItem Content="Bangladesh"/>
+                                        <ComboBoxItem Content="Barbados"/>
+                                        <ComboBoxItem Content="Belarus"/>
+                                        <ComboBoxItem Content="Belgium"/>
+                                        <ComboBoxItem Content="Belize"/>
+                                        <ComboBoxItem Content="Benin"/>
+                                        <ComboBoxItem Content="Bhutan"/>
+                                        <ComboBoxItem Content="Bolivia"/>
+                                        <ComboBoxItem Content="Bosnia and Herzegovina"/>
+                                        <ComboBoxItem Content="Botswana"/>
+                                        <ComboBoxItem Content="Brazil"/>
+                                        <ComboBoxItem Content="Brunei"/>
+                                        <ComboBoxItem Content="Bulgaria"/>
+                                        <ComboBoxItem Content="Burkina Faso"/>
+                                        <ComboBoxItem Content="Burundi"/>
+                                        <ComboBoxItem Content="Cabo Verde"/>
+                                        <ComboBoxItem Content="Cambodia"/>
+                                        <ComboBoxItem Content="Cameroon"/>
+                                        <ComboBoxItem Content="Canada"/>
+                                        <ComboBoxItem Content="Central African Republic"/>
+                                        <ComboBoxItem Content="Chad"/>
+                                        <ComboBoxItem Content="Chile"/>
+                                        <ComboBoxItem Content="China"/>
+                                        <ComboBoxItem Content="Colombia"/>
+                                        <ComboBoxItem Content="Comoros"/>
+                                        <ComboBoxItem Content="Congo, Democratic Republic of the"/>
+                                        <ComboBoxItem Content="Congo, Republic of the"/>
+                                        <ComboBoxItem Content="Costa Rica"/>
+                                        <ComboBoxItem Content="Côte d'Ivoire"/>
+                                        <ComboBoxItem Content="Croatia"/>
+                                        <ComboBoxItem Content="Cuba"/>
+                                        <ComboBoxItem Content="Cyprus"/>
+                                        <ComboBoxItem Content="Czech Republic"/>
+                                        <ComboBoxItem Content="Denmark"/>
+                                        <ComboBoxItem Content="Djibouti"/>
+                                        <ComboBoxItem Content="Dominica"/>
+                                        <ComboBoxItem Content="Dominican Republic"/>
+                                        <ComboBoxItem Content="East Timor (Timor-Leste)"/>
+                                        <ComboBoxItem Content="Ecuador"/>
+                                        <ComboBoxItem Content="Egypt"/>
+                                        <ComboBoxItem Content="El Salvador"/>
+                                        <ComboBoxItem Content="Equatorial Guinea"/>
+                                        <ComboBoxItem Content="Eritrea"/>
+                                        <ComboBoxItem Content="Estonia"/>
+                                        <ComboBoxItem Content="Ethiopia"/>
+                                        <ComboBoxItem Content="Fiji"/>
+                                        <ComboBoxItem Content="Finland"/>
+                                        <ComboBoxItem Content="France"/>
+                                        <ComboBoxItem Content="Gabon"/>
+                                        <ComboBoxItem Content="The Gambia"/>
+                                        <ComboBoxItem Content="Georgia"/>
+                                        <ComboBoxItem Content="Germany"/>
+                                        <ComboBoxItem Content="Ghana"/>
+                                        <ComboBoxItem Content="Greece"/>
+                                        <ComboBoxItem Content="Grenada"/>
+                                        <ComboBoxItem Content="Guatemala"/>
+                                        <ComboBoxItem Content="Guinea"/>
+                                        <ComboBoxItem Content="Guinea-Bissau"/>
+                                        <ComboBoxItem Content="Guyana"/>
+                                        <ComboBoxItem Content="Haiti"/>
+                                        <ComboBoxItem Content="Honduras"/>
+                                        <ComboBoxItem Content="Hungary"/>
+                                        <ComboBoxItem Content="Iceland"/>
+                                        <ComboBoxItem Content="India"/>
+                                        <ComboBoxItem Content="Indonesia"/>
+                                        <ComboBoxItem Content="Iran"/>
+                                        <ComboBoxItem Content="Iraq"/>
+                                        <ComboBoxItem Content="Ireland"/>
+                                        <ComboBoxItem Content="Israel"/>
+                                        <ComboBoxItem Content="Italy"/>
+                                        <ComboBoxItem Content="Jamaica"/>
+                                        <ComboBoxItem Content="Japan"/>
+                                        <ComboBoxItem Content="Jordan"/>
+                                        <ComboBoxItem Content="Kazakhstan"/>
+                                        <ComboBoxItem Content="Kenya"/>
+                                        <ComboBoxItem Content="Kiribati"/>
+                                        <ComboBoxItem Content="Korea, North"/>
+                                        <ComboBoxItem Content="Korea, South"/>
+                                        <ComboBoxItem Content="Kosovo"/>
+                                        <ComboBoxItem Content="Kuwait"/>
+                                        <ComboBoxItem Content="Kyrgyzstan"/>
+                                        <ComboBoxItem Content="Laos"/>
+                                        <ComboBoxItem Content="Latvia"/>
+                                        <ComboBoxItem Content="Lebanon"/>
+                                        <ComboBoxItem Content="Lesotho"/>
+                                        <ComboBoxItem Content="Liberia"/>
+                                        <ComboBoxItem Content="Libya"/>
+                                        <ComboBoxItem Content="Liechtenstein"/>
+                                        <ComboBoxItem Content="Lithuania"/>
+                                        <ComboBoxItem Content="Luxembourg"/>
+                                        <ComboBoxItem Content="Macedonia"/>
+                                        <ComboBoxItem Content="Madagascar"/>
+                                        <ComboBoxItem Content="Malawi"/>
+                                        <ComboBoxItem Content="Malaysia"/>
+                                        <ComboBoxItem Content="Maldives"/>
+                                        <ComboBoxItem Content="Mali"/>
+                                        <ComboBoxItem Content="Malta"/>
+                                        <ComboBoxItem Content="Marshall Islands"/>
+                                        <ComboBoxItem Content="Mauritania"/>
+                                        <ComboBoxItem Content="Mauritius"/>
+                                        <ComboBoxItem Content="Mexico"/>
+                                        <ComboBoxItem Content="Micronesia, Federated States of"/>
+                                        <ComboBoxItem Content="Moldova"/>
+                                        <ComboBoxItem Content="Monaco"/>
+                                        <ComboBoxItem Content="Mongolia"/>
+                                        <ComboBoxItem Content="Montenegro"/>
+                                        <ComboBoxItem Content="Morocco"/>
+                                        <ComboBoxItem Content="Mozambique"/>
+                                        <ComboBoxItem Content="Myanmar (Burma)"/>
+                                        <ComboBoxItem Content="Namibia"/>
+                                        <ComboBoxItem Content="Nauru"/>
+                                        <ComboBoxItem Content="Nepal"/>
+                                        <ComboBoxItem Content="Netherlands"/>
+                                        <ComboBoxItem Content="New Zealand"/>
+                                        <ComboBoxItem Content="Nicaragua"/>
+                                        <ComboBoxItem Content="Niger"/>
+                                        <ComboBoxItem Content="Nigeria"/>
+                                        <ComboBoxItem Content="Norway"/>
+                                        <ComboBoxItem Content="Oman"/>
+                                        <ComboBoxItem Content="Pakistan"/>
+                                        <ComboBoxItem Content="Palau"/>
+                                        <ComboBoxItem Content="Panama"/>
+                                        <ComboBoxItem Content="Papua New Guinea"/>
+                                        <ComboBoxItem Content="Paraguay"/>
+                                        <ComboBoxItem Content="Peru"/>
+                                        <ComboBoxItem Content="Philippines"/>
+                                        <ComboBoxItem Content="Poland"/>
+                                        <ComboBoxItem Content="Portugal"/>
+                                        <ComboBoxItem Content="Qatar"/>
+                                        <ComboBoxItem Content="Romania"/>
+                                        <ComboBoxItem Content="Russia"/>
+                                        <ComboBoxItem Content="Rwanda"/>
+                                        <ComboBoxItem Content="Saint Kitts and Nevis"/>
+                                        <ComboBoxItem Content="Saint Lucia"/>
+                                        <ComboBoxItem Content="Saint Vincent and the Grenadines"/>
+                                        <ComboBoxItem Content="Samoa"/>
+                                        <ComboBoxItem Content="San Marino"/>
+                                        <ComboBoxItem Content="Sao Tome and Principe"/>
+                                        <ComboBoxItem Content="Saudi Arabia"/>
+                                        <ComboBoxItem Content="Senegal"/>
+                                        <ComboBoxItem Content="Serbia"/>
+                                        <ComboBoxItem Content="Seychelles"/>
+                                        <ComboBoxItem Content="Sierra Leone"/>
+                                        <ComboBoxItem Content="Singapore"/>
+                                        <ComboBoxItem Content="Slovakia"/>
+                                        <ComboBoxItem Content="Slovenia"/>
+                                        <ComboBoxItem Content="Solomon Islands"/>
+                                        <ComboBoxItem Content="Somalia"/>
+                                        <ComboBoxItem Content="South Africa"/>
+                                        <ComboBoxItem Content="Spain"/>
+                                        <ComboBoxItem Content="Sri Lanka"/>
+                                        <ComboBoxItem Content="Sudan"/>
+                                        <ComboBoxItem Content="Sudan, South"/>
+                                        <ComboBoxItem Content="Suriname"/>
+                                        <ComboBoxItem Content="Swaziland"/>
+                                        <ComboBoxItem Content="Sweden"/>
+                                        <ComboBoxItem Content="Switzerland"/>
+                                        <ComboBoxItem Content="Syria"/>
+                                        <ComboBoxItem Content="Taiwan"/>
+                                        <ComboBoxItem Content="Tajikistan"/>
+                                        <ComboBoxItem Content="Tanzania"/>
+                                        <ComboBoxItem Content="Thailand"/>
+                                        <ComboBoxItem Content="Togo"/>
+                                        <ComboBoxItem Content="Tonga"/>
+                                        <ComboBoxItem Content="Trinidad and Tobago"/>
+                                        <ComboBoxItem Content="Tunisia"/>
+                                        <ComboBoxItem Content="Turkey"/>
+                                        <ComboBoxItem Content="Turkmenistan"/>
+                                        <ComboBoxItem Content="Tuvalu"/>
+                                        <ComboBoxItem Content="Uganda"/>
+                                        <ComboBoxItem Content="Ukraine"/>
+                                        <ComboBoxItem Content="United Arab Emirates"/>
+                                        <ComboBoxItem Content="United Kingdom"/>
+                                        <ComboBoxItem Content="United States"/>
+                                        <ComboBoxItem Content="Uruguay"/>
+                                        <ComboBoxItem Content="Uzbekistan"/>
+                                        <ComboBoxItem Content="Vanuatu"/>
+                                        <ComboBoxItem Content="Vatican City"/>
+                                        <ComboBoxItem Content="Venezuela"/>
+                                        <ComboBoxItem Content="Vietnam"/>
+                                        <ComboBoxItem Content="Yemen"/>
+                                        <ComboBoxItem Content="Zambia"/>
+                                        <ComboBoxItem Content="Zimbabwe"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtLicenseCountrySuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Issue Date" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <DatePicker Name="dpDrivingLicenseIssueDate" Style="{StaticResource TableDatePicker}" SelectedDateChanged="formInputChanged"/>
+
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtLicenseIssueDateSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Expiry Date" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <DatePicker Name="dpDrivingLicenseExpiry" Style="{StaticResource TableDatePicker}" SelectedDateChanged="formInputChanged"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtLicenseExpirySuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Convictions" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <ComboBox Name="cmbDrivingConvictions"  Style="{StaticResource TableComboBox}" SelectionChanged="formInputChanged" >
+                                        <ComboBoxItem Content="Choose" IsSelected="True" IsEnabled="False"/>
+                                        <ComboBoxItem Content="0"/>
+                                        <ComboBoxItem Content="1"/>
+                                        <ComboBoxItem Content="More than 1"/>
+                                    </ComboBox>
+
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtLicenseConvictionSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Scan Not Found" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <Button Name="btnScanDrivingLicense" Content="Scan Driving License" FontSize="14" Click="btnScanDrivingLicense_Click"/>
+
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtDrivingLicenseScanSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Expander>
+                    <Expander Name="expCreditCard" Header="Payment Details" Style="{StaticResource TableExpander}">
+                        <StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Card Type" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <ComboBox Name="cmbCreditCardType"  Style="{StaticResource TableComboBox}" SelectionChanged="formInputChanged">
+                                        <ComboBoxItem Content="Choose" IsEnabled="False" IsSelected="True"/>
+                                        <ComboBoxItem Name="Visa" Content="Visa"/>
+                                        <ComboBoxItem Name="MasterCard" Content="MasterCard"/>
+                                        <ComboBoxItem Name="Amex" Content="American Express"/>
+                                    </ComboBox>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCreditCardTypeSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Name on Card" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtCreditCardCardName" Width="150" FontSize="12" VerticalContentAlignment="Center" Height="24" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCreditCardNameSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Card Number" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtCreditCardCardNumber" Width="150" FontSize="12" VerticalContentAlignment="Center" Height="24" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged" />
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCreditCardNumberSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Expiry Date   (MM/YY)" TextWrapping="Wrap" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="dpCreditCardExpiry"  Style="{StaticResource TableTexBox}" TextChanged="formInputChanged"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCreditCardExpirySuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel Style="{StaticResource TableRowStackPanel}">
+                                <StackPanel Style="{StaticResource TableLabelColumn}">
+                                    <TextBlock Text="Security Code" Style="{StaticResource TableLabel}"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableEntryColumn}">
+                                    <TextBox Name="txtCreditCardSecurityCode" Style="{StaticResource TableTexBox}" TextChanged="formInputChanged"/>
+                                </StackPanel>
+                                <StackPanel Style="{StaticResource TableSuccessColumn}">
+                                    <TextBlock Name="txtCreditCardSecurityCodeSuccess" Style="{StaticResource SuccessTextBlock}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Expander>
+
+                    <Button Name="btnSave" Content="Save" Style="{StaticResource TableButton}" Click="btnSave_Click"/>
+
+
+                </StackPanel>
+                <StackPanel Width="300" Orientation="Vertical">
+                    <Image Name="imgCustomerImage" Height="300"  Source="Assets/blank_avatar.png" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="1,1,2,2" />
+                    <Button Name="btnUpdateCustomerImage" Content="Update Image" FontSize="18" Margin="20" Click="btnUpdateCustomerImage_Click"/>
+                  
+                    
+                </StackPanel> 
+
+            </StackPanel>
+        </ScrollViewer>
+
+        
+
+
+
+
+
+    </Grid>
+</Page>

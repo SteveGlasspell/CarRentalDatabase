@@ -1,0 +1,37 @@
+﻿<Page x:Class="StephenGlasspell_CarRental.CommonTasksSidePanel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StephenGlasspell_CarRental"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="400"
+      Title="CommonTasksSidePanel" >
+
+    <Grid Background="Gold">
+        <Image Name="imgBackground" Source="/Assets/VehicleImages/Mercedes/Mercedes-AMG-GTS/Mercedes-AMG-GT-10.jpg" Stretch="UniformToFill" HorizontalAlignment="Center" >
+            <Image.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-400"/>
+                </TransformGroup>
+            </Image.LayoutTransform>
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <StackPanel Name="spCommonTasksSidePanelMainPanel" Orientation="Vertical">
+            
+            <TextBlock Name="txtErrorMessages"  Text="" FontSize="24" Width="auto" Height="auto" Foreground="White"/>
+            <Image Name="imgCommonImage" Source="/Assets/VehicleImages/AppImages/Glass-Prestige-FullSize-Logo.png"/>
+        </StackPanel>
+        <Button Name="btnToday" Content="Show Today" FontSize="25" HorizontalAlignment="Left" Margin="266,703,-16,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.093,0.55" Click="btnToday_Click"/>
+    </Grid>
+</Page>

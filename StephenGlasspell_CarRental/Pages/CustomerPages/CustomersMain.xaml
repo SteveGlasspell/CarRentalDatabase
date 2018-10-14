@@ -1,0 +1,44 @@
+﻿<Page x:Class="StephenGlasspell_CarRental.CustomersMain"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:StephenGlasspell_CarRental"
+      mc:Ignorable="d"
+      Title="CustomersMain" Style="{StaticResource SubMenuPage}">
+    
+
+    <Grid Background="Beige">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Style="{StaticResource SubMenuRow}">
+                <TextBlock Name="IconCustomerMain" Text="🕴" Style="{StaticResource SubMenuIcon}"/>
+                <TextBlock x:Name="pageCustomerMain" Text="Customer Main Page" Style="{StaticResource HeaderLabel}"/>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource SubMenuRow}">
+                <StackPanel Style="{StaticResource SubMenuRowLeft}">
+                    <Button Name="btnCustomerNew"  Content="New Customer"  Style="{StaticResource SubMenuButton}"  Click="btnCustomerNew_Click"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource SubMenuRowRight}">
+                    <TextBlock Text="Enter details for a New Customer."  Style="{StaticResource SubMenuButtonDescription}" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource SubMenuRow}">
+                <StackPanel Style="{StaticResource SubMenuRowLeft}">
+                    <Button Name="btnCustomerEdit"   Content="Edit Customer" Style="{StaticResource SubMenuButton}" Click="btnCustomerEdit_Click" />
+                </StackPanel>
+                <StackPanel Style="{StaticResource SubMenuRowRight}">
+                    <TextBlock Text="Edit details of an Existing Customer." Style="{StaticResource SubMenuButtonDescription}" />
+                </StackPanel>
+            </StackPanel>
+
+
+
+
+        </StackPanel>
+
+
+
+    </Grid>
+</Page>

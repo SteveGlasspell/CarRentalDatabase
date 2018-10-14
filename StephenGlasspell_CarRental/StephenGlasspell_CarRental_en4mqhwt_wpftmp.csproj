@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4D72E0CD-9AF1-4FE4-982D-ADE4A77A8E59}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StephenGlasspell_CarRental</RootNamespace>
+    <AssemblyName>StephenGlasspell_CarRental</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Audio.cs" />
+    <Compile Include="Camera.cs" />
+    <Compile Include="CommonTasksSidePanel.xaml.cs">
+      <DependentUpon>CommonTasksSidePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommonTasksSplashPage.xaml.cs">
+      <DependentUpon>CommonTasksSplashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerList.xaml.cs">
+      <DependentUpon>CustomerList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerUpdateSuccess.xaml.cs">
+      <DependentUpon>CustomerUpdateSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database.cs" />
+    <Compile Include="DataDelegate.cs" />
+    <Compile Include="DataValidator.cs" />
+    <Compile Include="DummyDataGenerator.cs" />
+    <Compile Include="EmployeesMain.xaml.cs">
+      <DependentUpon>EmployeesMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FleetList.xaml.cs">
+      <DependentUpon>FleetList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormField.cs" />
+    <Compile Include="Printer.cs" />
+    <Compile Include="Scanner.cs" />
+    <Compile Include="ServiceEdit.xaml.cs">
+      <DependentUpon>ServiceEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceMain.xaml.cs">
+      <DependentUpon>ServiceMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceNew.xaml.cs">
+      <DependentUpon>ServiceNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleUpdateSuccess.xaml.cs">
+      <DependentUpon>VehicleUpdateSuccess.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BookingsEdit.xaml.cs">
+      <DependentUpon>BookingsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookingsMain.xaml.cs">
+      <DependentUpon>BookingsMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookingsNew.xaml.cs">
+      <DependentUpon>BookingsNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommonTasks.xaml.cs">
+      <DependentUpon>CommonTasks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersEdit.xaml.cs">
+      <DependentUpon>CustomersEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersMain.xaml.cs">
+      <DependentUpon>CustomersMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomersNew.xaml.cs">
+      <DependentUpon>CustomersNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FleetEdit.xaml.cs">
+      <DependentUpon>FleetEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FleetMain.xaml.cs">
+      <DependentUpon>FleetMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FleetNew.xaml.cs">
+      <DependentUpon>FleetNew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SpeechLib">
+      <Guid>{D3C4A7F2-7D27-4332-B41F-593D71E16DB1}</Guid>
+      <VersionMajor>11</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\audio\Fail.wav" />
+    <Content Include="Assets\audio\PhotographComplete.wav" />
+    <Content Include="Assets\audio\StartApplication.wav" />
+    <Content Include="Assets\audio\WaitForPhotograph.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\VehicleImages\Morgan\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Device.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Drawing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\UIAutomationProvider.dll" />
+    <ReferencePath Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\packages\WebEye.Controls.Wpf.WebCameraControl.1.0.3\lib\net40\WebEye.Controls.Wpf.WebCameraControl.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\WindowsBase.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\WindowsFormsIntegration.dll" />
+    <ReferencePath Include="obj\Debug\Interop.SpeechLib.dll">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </ReferencePath>
+    <ReferencePath Include="obj\Debug\Interop.WIA.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\About.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\BookingsEdit.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\BookingsMain.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\BookingsNew.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CommonTasks.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CommonTasksSidePanel.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CommonTasksSplashPage.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CustomerList.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CustomersEdit.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CustomersMain.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CustomersNew.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\CustomerUpdateSuccess.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\EmployeesMain.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\FleetEdit.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\FleetList.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\FleetMain.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\FleetNew.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\LoginPage.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\MainWindow.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\ServiceEdit.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\ServiceMain.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\ServiceNew.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\Settings.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\VehicleUpdateSuccess.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\App.g.cs" />
+    <Compile Include="D:\OneDrive - TAFE\Cert 4 Programming\ASP\ADV Session7\StephenGlasspell_CarRental\StephenGlasspell_CarRental\obj\Debug\StephenGlasspell_CarRental_Content.g.cs" />
+  </ItemGroup>
+</Project>
