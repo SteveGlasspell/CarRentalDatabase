@@ -38,7 +38,7 @@
                 <TextBlock Text="Collected?" Foreground="DarkRed" FontStyle="Italic" FontWeight="Bold" FontSize="16" Margin="110,0,10,0"/>
             </StackPanel>
 
-            <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" Height="400">
+            <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" Height="450">
                 <StackPanel Name="spResultsPanel"  Orientation="Vertical" CanVerticallyScroll="True">
 
                 </StackPanel>

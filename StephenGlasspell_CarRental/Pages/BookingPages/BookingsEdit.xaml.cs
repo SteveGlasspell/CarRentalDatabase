@@ -987,8 +987,9 @@ namespace StephenGlasspell_CarRental
                 return;
             }
 
+            Database.getInstance().update("Vehicle", new string[] { "Odometer" }, new string[] { odo.ToString() }, "WHERE VehicleVIN", "=", vehicleVIN);
 
-          int recordsUpdated =  Database.getInstance().update("Booking", new string[] { "actualHireBeginDateTime" },new string[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID" , "=", bookingID.ToString());
+            int recordsUpdated =  Database.getInstance().update("Booking", new string[] { "actualHireBeginDateTime" },new string[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID" , "=", bookingID.ToString());
 
             if(recordsUpdated > 0)
             {
@@ -1024,6 +1025,7 @@ namespace StephenGlasspell_CarRental
                     else
                     {
                         Database.getInstance().update("Booking", new string[] { "OdometerReadingPostHire" }, new string[] { txtOdometerReadingPostHire.Text }, "WHERE BookingID", "=", bookingID.ToString());
+                        Database.getInstance().update("Vehicle", new string[] { "Odometer" }, new string[] { odo.ToString() }, "WHERE VehicleVIN", "=", vehicleVIN);
                     }
                 }
 

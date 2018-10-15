@@ -44,16 +44,22 @@ namespace StephenGlasspell_CarRental
         {
             try
             {
+                // Sets up the dummy bookings in the database to simulate real use.
+
                 Database.getInstance().setDBSource("OLYMPUS-MONS-FI");
-                Database.getInstance().selectStarFrom("Employee");
+                
                 Database.getInstance().customSQL("UPDATE Booking set ActualHireBeginDateTime = ScheduledHireBeginDateTime WHERE ScheduledHireBeginDateTime < CURRENT_TIMESTAMP;");
                 Database.getInstance().customSQL("UPDATE Booking set ActualHireReturnDateTime = ScheduledHireReturnDateTime WHERE ScheduledHireReturnDateTime < CURRENT_TIMESTAMP;");
-            } catch(Exception e)
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireBeginDateTime = null, ActualHireReturnDateTime = null WHERE ScheduledHireBeginDateTime > CURRENT_TIMESTAMP");
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireReturnDateTime = null WHERE ScheduledHireReturnDateTime > CURRENT_TIMESTAMP");
+            }
+            catch (Exception e)
             {
                 Database.getInstance().setDBSource("MSSQLSERVER021");
                 Database.getInstance().customSQL("UPDATE Booking set ActualHireBeginDateTime = ScheduledHireBeginDateTime WHERE ScheduledHireBeginDateTime < CURRENT_TIMESTAMP;");
                 Database.getInstance().customSQL("UPDATE Booking set ActualHireReturnDateTime = ScheduledHireReturnDateTime WHERE ScheduledHireReturnDateTime < CURRENT_TIMESTAMP;");
-
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireBeginDateTime = null, ActualHireReturnDateTime = null WHERE ScheduledHireBeginDateTime > CURRENT_TIMESTAMP");
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireReturnDateTime = null WHERE ScheduledHireReturnDateTime > CURRENT_TIMESTAMP");
 
             }
         }
