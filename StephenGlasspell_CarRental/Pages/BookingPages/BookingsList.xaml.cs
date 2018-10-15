@@ -285,10 +285,7 @@ namespace StephenGlasspell_CarRental
            strEmployeeID = "",
            strJobTitle = "";
 
-            DateTime scheduledBegin = new DateTime();
-            DateTime scheduledReturn = new DateTime();
-            DateTime actualBegin = new DateTime();
-            DateTime actualReturn = new DateTime();
+            
 
 
 
@@ -296,10 +293,10 @@ namespace StephenGlasspell_CarRental
             {
                 foreach (DataRow row in table.Rows)
                 {
-                    scheduledBegin = new DateTime();
-                    scheduledReturn = new DateTime();
-                    actualBegin = new DateTime();
-                    actualReturn = new DateTime();
+                    DateTime scheduledBegin = new DateTime();
+                    DateTime scheduledReturn = new DateTime();
+                    DateTime actualBegin = new DateTime();
+                    DateTime actualReturn = new DateTime();
 
                     foreach (DataColumn column in table.Columns)
                     {
@@ -373,6 +370,10 @@ namespace StephenGlasspell_CarRental
                                 strScheduledHireBeginDateTime = dateTime.ToString("dd MMM yyyy HH:mm");
                                 scheduledBegin = dateTime;
                             }
+                            else
+                            {
+                                strScheduledHireBeginDateTime = "";
+                            }
 
                         }
                         if (column.ColumnName == "ScheduledHireReturnDateTime")
@@ -384,6 +385,10 @@ namespace StephenGlasspell_CarRental
                                 DateTime.TryParse(row[column].ToString(), out dateTime);
                                 strScheduledHireReturnDateTime = dateTime.ToString("dd MMM yyyy HH:mm");
                                 scheduledReturn = dateTime;
+                            }
+                            else
+                            {
+                                strScheduledHireReturnDateTime = "";
                             }
 
 
@@ -398,6 +403,10 @@ namespace StephenGlasspell_CarRental
                                 strActualHireBeginDateTime = dateTime.ToString("dd MMM yyyy HH:mm");
                                 actualBegin = dateTime;
                             }
+                            else
+                            {
+                                strActualHireBeginDateTime = "";
+                            }
 
                         }
                         if (column.ColumnName == "ActualHireReturnDateTime")
@@ -409,6 +418,10 @@ namespace StephenGlasspell_CarRental
                                 DateTime.TryParse(row[column].ToString(), out dateTime);
                                 strActualHireReturnDateTime = dateTime.ToString("dd MMM yyyy HH:mm");
                                 actualReturn = dateTime;
+                            }
+                            else
+                            {
+                                strActualHireReturnDateTime = "";
                             }
                         }
                         if (column.ColumnName == "EmployeeID")
@@ -485,10 +498,28 @@ namespace StephenGlasspell_CarRental
 
             if (!String.IsNullOrEmpty(collected))
             {
-                tbCustomer.Background = Brushes.LightGreen;
-                tbVehicle.Background = Brushes.LightGreen;
-                tbDates.Background = Brushes.LightGreen;
-                tbCollected.Background = Brushes.LightGreen;
+                if (collected.Length > 20)
+                {
+                    tbCustomer.Background = Brushes.LightGray;
+                    tbVehicle.Background = Brushes.LightGray;
+                    tbDates.Background = Brushes.LightGray;
+                    tbCollected.Background = Brushes.LightGray;
+                }
+                else
+                {
+
+                    tbCustomer.Background = Brushes.LightGreen;
+                    tbVehicle.Background = Brushes.LightGreen;
+                    tbDates.Background = Brushes.LightGreen;
+                    tbCollected.Background = Brushes.LightGreen;
+                }
+            }
+            else
+            {
+                tbCustomer.Background = Brushes.Yellow;
+                tbVehicle.Background = Brushes.Yellow;
+                tbDates.Background = Brushes.Yellow;
+                tbCollected.Background = Brushes.Yellow;
             }
 
             //Get the style from the main app.xaml resource.

@@ -11,14 +11,14 @@
     <Grid Background="Beige">
         <TextBlock Text="Edit Booking" Style="{StaticResource HeaderLabel}"/>
 
-        <ScrollViewer  CanContentScroll="True" VerticalScrollBarVisibility="Auto" Margin="50">
+        <ScrollViewer  CanContentScroll="True" VerticalScrollBarVisibility="Auto" Margin="0,50,0,0">
             <StackPanel Name="MainStackPanel"  Orientation="Horizontal"  CanVerticallyScroll="True" >
 
 
-                <StackPanel HorizontalAlignment="Right" Width="600">
+                <StackPanel HorizontalAlignment="Right" Width="700" Orientation="Vertical">
 
                     <TextBlock Name="txtCustomerName" FontSize="18"/>
-                    <Button Name="btnGoToCustomerEdit" Content="Go to Customer Details" Width="150" HorizontalAlignment="Left" Margin="30,0,30,0" Click="btnGoToCustomerEdit_Click"/>
+                    <Button Name="btnGoToCustomerEdit" Content="Go to Customer Details" Width="150" HorizontalAlignment="Left" Margin="20" Click="btnGoToCustomerEdit_Click"/>
                     
 
                     <Expander Name="expDates" Header="Dates" IsExpanded="True" Style="{StaticResource TableExpander}"  >
@@ -141,7 +141,7 @@
                                 <ListBoxItem Content="Select your dates and times to see the available vehicles."/>
                             </ListBox>
                             <TextBlock FontSize="10"/>
-                            <Button Name="btnShowAailableVehicles" Content="Show All Available Vehicles" Width="300" FontSize="18" Click="btnShowAailableVehicles_Click"/>
+                            <Button Name="btnShowAvailableVehicles" Content="Show All Available Vehicles" Width="300" FontSize="18" Click="btnShowAvailableVehicles_Click"/>
                         </StackPanel>
                     </Expander>
                     <Expander Name="expVehicleDetails" Header="Vehicle Details"  Style="{StaticResource TableExpander}">

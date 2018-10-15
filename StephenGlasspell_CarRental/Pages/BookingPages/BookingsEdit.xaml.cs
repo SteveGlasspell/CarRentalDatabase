@@ -43,8 +43,8 @@ namespace StephenGlasspell_CarRental
         int bookingID;
         int CustomerID;
         string vehicleVIN;
-        double dblTotalBill = 0;
-        double dblTotalPaid = 0;
+        decimal decTotalBill = 0;
+        decimal decTotalPaid = 0;
         List<string> vehiclesAvailable = new List<string>();
 
 
@@ -254,10 +254,10 @@ namespace StephenGlasspell_CarRental
                         {
                             // Take the string and parse it as a double, to format it as currency.
                             strTotalBill = row[column].ToString();
-                            double totalBill = 0;
-                            double.TryParse(strTotalBill, out totalBill);
+                            decimal totalBill = 0;
+                            decimal.TryParse(strTotalBill, out totalBill);
                             txtTotalCharge.Text = totalBill.ToString("C");
-                            dblTotalBill = totalBill;
+                            decTotalBill = Math.Round(totalBill,2);
                         }
                     
                         if (column.ColumnName == "Manufacturer")
@@ -291,12 +291,13 @@ namespace StephenGlasspell_CarRental
             // Add the Vehicle to the listBox on the form.
             lstVehiclesAvailable.Items.Add(strManufacturer + " " + strModel);
 
+            
             string strPaymentsMade = Database.getInstance().datasetToString(Database.getInstance().customSQL("SELECT SUM(Amount) FROM Payment WHERE BookingID = '" +bookingID+"'"));
-            double dblPaymentsMade = 0;
-            Double.TryParse(strPaymentsMade, out dblPaymentsMade);
+            decimal decPaymentsMade = 0;
+            Decimal.TryParse(strPaymentsMade, out decPaymentsMade);
 
-            txtPaymentStatus.Text = dblPaymentsMade.ToString("C");
-            dblTotalPaid = dblPaymentsMade;
+            txtPaymentStatus.Text = decPaymentsMade.ToString("C");
+            decTotalPaid = Math.Round(decPaymentsMade,2);
             showHideControls();
         }
 
@@ -359,12 +360,26 @@ namespace StephenGlasspell_CarRental
         {
             string acCol = actualReturnDateTime.ToString();
             string acRet = actualReturnDateTime.ToString();
-            string paid = dblTotalPaid.ToString();
-            string bill = dblTotalBill.ToString();
+            string paid = decTotalPaid.ToString();
+            string bill = decTotalBill.ToString();
+
+            
 
             if (DataDelegate.debugMode)
             {
                 MessageBox.Show(acCol + "\n" + acRet + "\n" + paid + "\n" + bill, "Details");
+            }
+
+
+
+            if(decTotalPaid < decTotalBill)
+            {
+             
+                btnMakePayment.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnMakePayment.Visibility = Visibility.Collapsed;
             }
 
             // If the start of the booking is less than 30 minutes from now...
@@ -377,7 +392,7 @@ namespace StephenGlasspell_CarRental
                 {
                     
                     // If there is an outstanding balance to be paid.
-                    if (dblTotalPaid < dblTotalBill)
+                    if (decTotalPaid < decTotalBill)
                     {
                         // Show the "Make Payment" button and hide the "Sign out Vehicle" Button
                         btnMakePayment.Visibility = Visibility.Visible;
@@ -547,7 +562,7 @@ namespace StephenGlasspell_CarRental
                 return;
             }
 
-           int recordsUpdated = Database.getInstance().update("Booking", new string[] { "VehicleVIN", "ScheduledHireBeginDateTime", "ScheduledHireReturnDateTime" }, new string[] {vehicleVIN, scheduledCollectionDateTime.ToString("yyyy-MM-dd HH:mm:ss"), scheduledReturnDateTime.ToString("yyyy-MM-dd HH:mm:ss") },"WHERE BookingID","=", bookingID.ToString());
+           int recordsUpdated = Database.getInstance().update("Booking", new string[] { "VehicleVIN","TotalBill", "ScheduledHireBeginDateTime", "ScheduledHireReturnDateTime" }, new string[] {vehicleVIN, txtTotalCharge.Text, scheduledCollectionDateTime.ToString("yyyy-MM-dd HH:mm:ss"), scheduledReturnDateTime.ToString("yyyy-MM-dd HH:mm:ss") },"WHERE BookingID","=", bookingID.ToString());
 
 
             if (recordsUpdated == 0) // If there are any errors, show a message.
@@ -836,7 +851,7 @@ namespace StephenGlasspell_CarRental
             }
         }
 
-        private void btnShowAailableVehicles_Click(object sender, RoutedEventArgs e)
+        private void btnShowAvailableVehicles_Click(object sender, RoutedEventArgs e)
         {
             displayAvailableVehicles();
         }
@@ -862,15 +877,17 @@ namespace StephenGlasspell_CarRental
                         {
                             double dblDailyRate = 0;
                             double.TryParse(row[column].ToString(), out dblDailyRate);
-                            double dblTotalBill = 0;
                             txtDailyRate.Text = dblDailyRate.ToString("C");
-                            TimeSpan duration = new TimeSpan();
-                            duration = (scheduledReturnDateTime - scheduledCollectionDateTime);
-                            txtTotalCharge.Text = ((duration.Days + 1) * dblDailyRate).ToString("C");
+
+                            double dblTotalBill = 0;                       
+                            TimeSpan duration = (scheduledReturnDateTime - scheduledCollectionDateTime);
+                            dblTotalBill = ((duration.Days + 1) * dblDailyRate);
+                            txtTotalCharge.Text = dblTotalBill.ToString("C");
                         }
                     }
                 }
             }
+            
         }
 
         private void btnGoToCustomerEdit_Click(object sender, RoutedEventArgs e)
@@ -885,7 +902,7 @@ namespace StephenGlasspell_CarRental
         private void btnMakePayment_Click(object sender, RoutedEventArgs e)
         {
             
-            double amountToPay = dblTotalBill - dblTotalPaid;
+            decimal amountToPay = decTotalBill - decTotalPaid;
 
             if(amountToPay > 0)
             {
@@ -893,7 +910,7 @@ namespace StephenGlasspell_CarRental
 
                 if(recordsInserted > 0)
                 {
-                    //  txtPaymentStatus.Text = dblTotalBill.ToString("C");
+                    
                     showBookingData();
                     showHideControls();
                     MessageBox.Show("The payment has been processed successfully.", "Payment Successful");
@@ -905,12 +922,24 @@ namespace StephenGlasspell_CarRental
             }
             else
             {
+                if (DataDelegate.debugMode)
+                {
+                    MessageBox.Show("Total Bill : " + decTotalBill + "\nTotal Paid : " + decTotalPaid, "Payment Details.");
+                }
                 MessageBox.Show("The bill has already been settled.", "Nothing to pay.");
             }
         }
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
+            int odo;
+            if(!int.TryParse(txtOdometerReadingPreHire.Text, out odo))
+            {
+                MessageBox.Show("You must enter the Odometer PreHire Reading before signing out the vehicle.","Enter Odometer Reading.");
+                return;
+            }
+
+
           int recordsUpdated =  Database.getInstance().update("Booking", new string[] { "actualHireBeginDateTime" },new string[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID" , "=", bookingID.ToString());
 
             if(recordsUpdated > 0)
