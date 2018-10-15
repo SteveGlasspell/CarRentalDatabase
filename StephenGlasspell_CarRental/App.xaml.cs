@@ -46,9 +46,14 @@ namespace StephenGlasspell_CarRental
             {
                 Database.getInstance().setDBSource("OLYMPUS-MONS-FI");
                 Database.getInstance().selectStarFrom("Employee");
-            }catch(Exception e)
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireBeginDateTime = ScheduledHireBeginDateTime WHERE ScheduledHireBeginDateTime < CURRENT_TIMESTAMP;");
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireReturnDateTime = ScheduledHireReturnDateTime WHERE ScheduledHireReturnDateTime < CURRENT_TIMESTAMP;");
+            } catch(Exception e)
             {
                 Database.getInstance().setDBSource("MSSQLSERVER021");
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireBeginDateTime = ScheduledHireBeginDateTime WHERE ScheduledHireBeginDateTime < CURRENT_TIMESTAMP;");
+                Database.getInstance().customSQL("UPDATE Booking set ActualHireReturnDateTime = ScheduledHireReturnDateTime WHERE ScheduledHireReturnDateTime < CURRENT_TIMESTAMP;");
+
 
             }
         }

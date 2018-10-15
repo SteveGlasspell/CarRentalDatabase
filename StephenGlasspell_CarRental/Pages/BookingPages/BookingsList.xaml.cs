@@ -92,6 +92,7 @@ namespace StephenGlasspell_CarRental
                                             "T1.ActualHireBeginDateTime, " +
                                             "T1.ActualHireReturnDateTime, " +
                                             "T1.EmployeeID, " +
+                                            "T1.CancelledDateTime, " +
                                             "T5.FirstName, " +
                                             "T5.LastName, " +
                                             "T5.JobTitle " +
@@ -105,7 +106,8 @@ namespace StephenGlasspell_CarRental
                                             "and T1.EmployeeID = T5.EmployeeID " +
                                             "and T1.CustomerID = t2.CustomerID " +
                                             "and T1.CustomerID = T3.CustomerID " +
-                                            "and T1.VehicleVIN = T4.VehicleVIN");
+                                            "and T1.VehicleVIN = T4.VehicleVIN " +
+                                            "and T1.CancelledDateTime is null");
 
             // If no results have been found, display a message on the page.
             if (d.Tables[0].Rows.Count == 0)

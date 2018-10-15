@@ -45,6 +45,8 @@ namespace StephenGlasspell_CarRental
         string vehicleVIN;
         decimal decTotalBill = 0;
         decimal decTotalPaid = 0;
+        int intOdoPreHire = 0;
+        int intOdoPostHire = 0;
         List<string> vehiclesAvailable = new List<string>();
 
 
@@ -244,11 +246,13 @@ namespace StephenGlasspell_CarRental
                         {
                             strOdometerReadingPreHire = row[column].ToString();
                             txtOdometerReadingPreHire.Text = strOdometerReadingPreHire;
+                            int.TryParse(strOdometerReadingPreHire, out intOdoPreHire);
                         }
                         if (column.ColumnName == "OdometerReadingPostHire")
                         {
                             strOdometerReadingPostHire = row[column].ToString();
                             txtOdometerReadingPostHire.Text = strOdometerReadingPostHire;
+                            int.TryParse(strOdometerReadingPostHire, out intOdoPostHire);
                         }
                         if (column.ColumnName == "TotalBill")
                         {
@@ -382,10 +386,20 @@ namespace StephenGlasspell_CarRental
                 btnMakePayment.Visibility = Visibility.Collapsed;
             }
 
+            if(decTotalPaid > decTotalBill)
+            {
+                btnRefund.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnRefund.Visibility = Visibility.Collapsed;
+            }
+
             // If the start of the booking is less than 30 minutes from now...
            if((scheduledCollectionDateTime.AddMinutes(-30).CompareTo(DateTime.Now) < 0) )
             {
-
+                
+                
                 
                 // If the vehicle has not yet been collected...
                 if((actualCollectionDateTime == null)||(actualCollectionDateTime.CompareTo(new DateTime()) == 0))
@@ -407,6 +421,8 @@ namespace StephenGlasspell_CarRental
                 }
                 else // If the vehicle has been collected...
                 {
+                    lstVehiclesAvailable.IsEnabled = false;
+                    btnShowAvailableVehicles.IsEnabled = false;
                     cmbCollectionHour.IsEnabled = false;
                     cmbCollectionMinute.IsEnabled = false;
                     dpCollection.IsEnabled = false;
@@ -556,25 +572,30 @@ namespace StephenGlasspell_CarRental
         // Method to check all the inputs are valid and send them to the database if valid.
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            saveBooking();
+        }
+
+        private bool saveBooking()
+        {
             if (!bookingTimesAreValid())
             {
-                MessageBox.Show("Please check your dates and try again.","Selected dates are invalid.");
-                return;
+                MessageBox.Show("Please check your dates and try again.", "Selected dates are invalid.");
+                return false;
             }
 
-           int recordsUpdated = Database.getInstance().update("Booking", new string[] { "VehicleVIN","TotalBill", "ScheduledHireBeginDateTime", "ScheduledHireReturnDateTime" }, new string[] {vehicleVIN, txtTotalCharge.Text, scheduledCollectionDateTime.ToString("yyyy-MM-dd HH:mm:ss"), scheduledReturnDateTime.ToString("yyyy-MM-dd HH:mm:ss") },"WHERE BookingID","=", bookingID.ToString());
+            int recordsUpdated = Database.getInstance().update("Booking", new string[] { "VehicleVIN", "TotalBill", "ScheduledHireBeginDateTime", "ScheduledHireReturnDateTime" }, new string[] { vehicleVIN, txtTotalCharge.Text, scheduledCollectionDateTime.ToString("yyyy-MM-dd HH:mm:ss"), scheduledReturnDateTime.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID", "=", bookingID.ToString());
 
 
             if (recordsUpdated == 0) // If there are any errors, show a message.
             {
                 MessageBox.Show("There were some errors updating the database.", "Database Error");
-                return;
+                return false;
             }
             else  // If there are no errors, display the "BookingUpdateSuccess" page.
             {
-                CommonTasks.getInstance().frmCommonTasksMainFrame.Navigate(new BookingUpdateSuccess(bookingID));
+                showBookingData();
+                return true;
 
-                
             }
         }
         
@@ -840,14 +861,38 @@ namespace StephenGlasspell_CarRental
             MessageBoxResult result = MessageBox.Show( "Are you sure you want to cancel the booking?\nThe record will be permanently deleted.", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if(result == MessageBoxResult.Yes)
             {
+                if(decTotalPaid > 0)
+                {
+                    // Refund any payments made.
+                  int recordsInserted =  Database.getInstance().insert("Payment", new string[] { "BookingID","Amount", "DateOfPayment" }, new string[] {bookingID.ToString(), (-decTotalPaid).ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") });
+
+                    if(recordsInserted > 0)
+                    {
+                        MessageBox.Show(decTotalPaid.ToString("C") + " has been refunded to the customer.", "Payment Refunded");
+                    }
+                    else
+                    {
+                        MessageBox.Show("There was a problem refunding the payment throught the database.","Refund failed.");
+                    }
+                }
+
                 //Send SQL statement to database.
-                Database.getInstance().customSQL("DELETE FROM BOOKING WHERE BookingID = " + bookingID.ToString());
+              int recordsUpdated =  Database.getInstance().update("Booking", new string[] { "CancelledDateTime" }, new string[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID", "=", bookingID.ToString() );
 
                 // Show confirmation.
-                MessageBox.Show("Booking Deleted", "Success");
+                if(recordsUpdated > 0)
+                {
+                    MessageBox.Show("Booking Deleted", "Success");
 
-                // Navigate back to the List of Bookings page.
-                CommonTasks.getInstance().frmCommonTasksMainFrame.Navigate(new BookingsList());
+                    // Navigate back to the List of Bookings page.
+                    
+                    CommonTasks.getInstance().frmCommonTasksMainFrame.Navigate(new BookingsList());
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem cancelling the booking in the database.","Database Error");
+                }
+               
             }
         }
 
@@ -901,7 +946,10 @@ namespace StephenGlasspell_CarRental
 
         private void btnMakePayment_Click(object sender, RoutedEventArgs e)
         {
-            
+            // Save any unaved changes to Database first.
+            saveBooking();
+            showBookingData();
+
             decimal amountToPay = decTotalBill - decTotalPaid;
 
             if(amountToPay > 0)
@@ -958,18 +1006,78 @@ namespace StephenGlasspell_CarRental
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
+            if (intOdoPostHire < 1  )
+            {
+                int odo;
+                if(!int.TryParse(txtOdometerReadingPostHire.Text, out odo)){
+                    MessageBox.Show("Please update the Odometer Reading Post Hire before signing the vehicle in", "Update Odometer Reading");
+                    return;
+                }
+                else
+                {
+                    if (odo < intOdoPreHire)
+                    {
+                        MessageBox.Show("Post Hire Reading is less than Pre Hire Reading.\n Please enter the correct reading.", "Odometer Reading Error");
+                        txtOdometerReadingPostHire.Focus();
+
+                    }
+                    else
+                    {
+                        Database.getInstance().update("Booking", new string[] { "OdometerReadingPostHire" }, new string[] { txtOdometerReadingPostHire.Text }, "WHERE BookingID", "=", bookingID.ToString());
+                    }
+                }
+
+                
+            }
+            else
+            {
+                int odoPre = 0;
+                int odoPost = 0;
+
+            }
+
             int recordsUpdated = Database.getInstance().update("Booking", new string[] { "actualHireReturnDateTime" }, new string[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID", "=", bookingID.ToString());
 
             if (recordsUpdated > 0)
             {
-                MessageBox.Show("Please accept the keys from customer.", "Vehicle Booked Back In");
+                
                 showBookingData();
                 showHideControls();
+
+                if(decTotalPaid < decTotalBill)
+                {
+                    decimal amountToPay = decTotalBill - decTotalPaid;
+                    MessageBox.Show("Customer is required to pay the outstanding amount of " + amountToPay.ToString("C") + "\nPlease accept the keys from customer.", "Outstanding Balance Due.");
+                }
+
+                MessageBox.Show("Please accept the keys from customer.", "Vehicle Booked Back In");
             }
             else
             {
                 MessageBox.Show("There was a problem updating the database.", "Booking Out Error.");
             }
+        }
+
+        private void btnRefund_Click(object sender, RoutedEventArgs e)
+        {
+            decimal overPayment = decTotalPaid - decTotalBill;
+            if(overPayment > 0)
+            {
+               int recordsInserted = Database.getInstance().insert("Payment", new string[] { "BookingID", "Amount", "DateOfPayment" }, new string[] {bookingID.ToString(), (- overPayment).ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") });
+
+                if(recordsInserted > 0)
+                {
+                    MessageBox.Show(overPayment.ToString("C") + " has been refunded to the customer.", "Refund has been processed.");
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem processing the refund through the database.", "Refund failed.");
+                }
+
+
+            }
+            showBookingData();
+            showHideControls();
         }
     }
 }

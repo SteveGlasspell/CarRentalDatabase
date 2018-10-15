@@ -32,6 +32,5 @@
             <TextBlock Name="txtErrorMessages"  Text="" FontSize="24" Width="auto" Height="auto" Foreground="White"/>
             <Image Name="imgCommonImage" Source="/Assets/VehicleImages/AppImages/Glass-Prestige-FullSize-Logo.png"/>
         </StackPanel>
-        <Button Name="btnToday" Content="Show Today" FontSize="25" HorizontalAlignment="Left" Margin="266,703,-16,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="-0.093,0.55" Click="btnToday_Click"/>
     </Grid>
 </Page>

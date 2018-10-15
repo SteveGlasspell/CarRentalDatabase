@@ -169,31 +169,7 @@ namespace StephenGlasspell_CarRental
            
         }
 
-        // Method to toggle the display on the context sensitive right panel.
-        private void btnToday_Click(object sender, RoutedEventArgs e)
-        {
-            isPageShowingTodayDetails = !isPageShowingTodayDetails;
-
-            if (isPageShowingTodayDetails)
-            {
-                imgBackground.Visibility = Visibility.Hidden;
-                imgCommonImage.Visibility = Visibility.Collapsed;
-                getCollectionTimes();
-                
-                btnToday.Content = "Hide Today";
-                
-            }
-            else
-            {
-                imgBackground.Visibility = Visibility.Visible;
-                imgCommonImage.Visibility = Visibility.Visible;
-                spCommonTasksSidePanelMainPanel.Children.Clear();
-                btnToday.Content = "Show Today";
-
-                
-            }
-
-        }
+      
 
         private void btnCollections_Click(object sender, RoutedEventArgs e)
         {

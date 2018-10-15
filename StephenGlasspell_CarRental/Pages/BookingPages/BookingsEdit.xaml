@@ -218,7 +218,9 @@
                     <Button Name="btnSave" Content="Update Details" Width="200" Style="{StaticResource TableButton}" Click="btnSave_Click"/>
                     <Button Name="btnCancelBooking" Visibility="Collapsed" Content="Cancel Booking" Width="200" Style="{StaticResource TableButton}" Click="btnCancelBooking_Click"/>
                     <Button Name="btnMakePayment" Visibility="Collapsed" Content="Make Payment" Width="200" Style="{StaticResource TableButton}" Click="btnMakePayment_Click"/>
-                    <Button Name="btnSignOut" Visibility="Collapsed" Content="Sign Out Vehicle" Width="200" Style="{StaticResource TableButton}" Click="btnSignOut_Click"/>
+                    <Button Name="btnRefund" Visibility="Collapsed" Content="Refund OverPayment" Width="200" Style="{StaticResource TableButton}" Click="btnRefund_Click"/>
+
+                        <Button Name="btnSignOut" Visibility="Collapsed" Content="Sign Out Vehicle" Width="200" Style="{StaticResource TableButton}" Click="btnSignOut_Click"/>
                     <Button Name="btnSignIn" Visibility="Collapsed" Content="Sign In Vehicle" Width="200" Style="{StaticResource TableButton}" Click="btnSignIn_Click"/>
                     </StackPanel>
 

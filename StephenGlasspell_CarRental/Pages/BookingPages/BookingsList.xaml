@@ -22,8 +22,14 @@
                     <Button Name="btnNewBooking" Content="New Booking" ToolTip="Create New Booking" Height="30" Margin="30,0,30,0" Click="btnNewBooking_Click"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel>
-                <TextBlock Name="hd2Title" Text="Current Bookings" Style="{StaticResource Header2Label}"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="hd2Title" Text="Current Bookings" Width="240" Style="{StaticResource Header2Label}"/>
+                <StackPanel Orientation="Horizontal" Height="50" Background="Bisque" >
+                <TextBlock Text="KEY:" FontWeight="Bold" FontSize="16" Margin="10"/>
+                <TextBlock Text="GREY - Old Bookings" FontSize="16" Foreground="Gray" Margin="10"/>
+                <TextBlock Text="GREEN - Out For Hire" FontSize="16" Foreground="Green" Margin="10"/>
+                <TextBlock Text="YELLOW - Not Yet Collected" FontSize="16" Foreground="DarkGoldenrod" Margin="10"/>
+                </StackPanel>
             </StackPanel>
             <StackPanel Name="spHeaderRow" Orientation="Horizontal" HorizontalAlignment="Left" Visibility="Visible">
                 <TextBlock Text="Customer" Foreground="DarkRed" FontStyle="Italic" FontWeight="Bold" FontSize="16" Margin="10,0,10,0"/>
@@ -33,7 +39,7 @@
             </StackPanel>
 
             <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" Height="400">
-                <StackPanel Name="spResultsPanel" Background="Bisque" Orientation="Vertical" CanVerticallyScroll="True">
+                <StackPanel Name="spResultsPanel"  Orientation="Vertical" CanVerticallyScroll="True">
 
                 </StackPanel>
             </ScrollViewer>
