@@ -362,7 +362,10 @@ namespace StephenGlasspell_CarRental
             string paid = dblTotalPaid.ToString();
             string bill = dblTotalBill.ToString();
 
-            MessageBox.Show(acCol + "\n" + acRet + "\n" + paid + "\n" + bill, "Details");
+            if (DataDelegate.debugMode)
+            {
+                MessageBox.Show(acCol + "\n" + acRet + "\n" + paid + "\n" + bill, "Details");
+            }
 
             // If the start of the booking is less than 30 minutes from now...
            if((scheduledCollectionDateTime.AddMinutes(-30).CompareTo(DateTime.Now) < 0) )
@@ -392,6 +395,7 @@ namespace StephenGlasspell_CarRental
                     cmbCollectionHour.IsEnabled = false;
                     cmbCollectionMinute.IsEnabled = false;
                     dpCollection.IsEnabled = false;
+                    btnSignOut.Visibility = Visibility.Collapsed;
 
                     // If the vehicle has not been returned...
                     if((actualReturnDateTime.CompareTo(new DateTime()) == 0)||(actualCollectionDateTime == null)  )
@@ -880,17 +884,63 @@ namespace StephenGlasspell_CarRental
 
         private void btnMakePayment_Click(object sender, RoutedEventArgs e)
         {
+            
+            double amountToPay = dblTotalBill - dblTotalPaid;
 
+            if(amountToPay > 0)
+            {
+              int recordsInserted =  Database.getInstance().insert("Payment", new string[] { "BookingID", "Amount", "DateOfPayment" }, new string[] { bookingID.ToString(), amountToPay.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") });
+
+                if(recordsInserted > 0)
+                {
+                    //  txtPaymentStatus.Text = dblTotalBill.ToString("C");
+                    showBookingData();
+                    showHideControls();
+                    MessageBox.Show("The payment has been processed successfully.", "Payment Successful");
+                }
+                else
+                {
+                    MessageBox.Show("There was a problem creating the payment record.", "Payment failed.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("The bill has already been settled.", "Nothing to pay.");
+            }
         }
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e)
         {
+          int recordsUpdated =  Database.getInstance().update("Booking", new string[] { "actualHireBeginDateTime" },new string[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID" , "=", bookingID.ToString());
+
+            if(recordsUpdated > 0)
+            {
+                MessageBox.Show("Please give the keys to customer.", "Vehicle Booked Out For Hire");
+                showBookingData();
+                showHideControls();
+            }
+            else
+            {
+                MessageBox.Show("There was a problem updating the database.", "Booking Out Error.");
+            }
+           
 
         }
 
         private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
+            int recordsUpdated = Database.getInstance().update("Booking", new string[] { "actualHireReturnDateTime" }, new string[] { DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") }, "WHERE BookingID", "=", bookingID.ToString());
 
+            if (recordsUpdated > 0)
+            {
+                MessageBox.Show("Please accept the keys from customer.", "Vehicle Booked Back In");
+                showBookingData();
+                showHideControls();
+            }
+            else
+            {
+                MessageBox.Show("There was a problem updating the database.", "Booking Out Error.");
+            }
         }
     }
 }

@@ -60,7 +60,7 @@ namespace StephenGlasspell_CarRental
         // It may have been set to busy if there are long wait times for the database.
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Mouse.OverrideCursor = DataDelegate.previousCursor;
+            Mouse.OverrideCursor = Cursors.Arrow;
             
         }
 
@@ -527,74 +527,7 @@ namespace StephenGlasspell_CarRental
             spResultsPanel.Children.Add(resultButton);
         }
 
-        private void addResult(String bookingID, String customer, String mobilePhone, String vehicle, String scheduledStart, String ScheduledReturn, String actualStart, String actualReturn)
-        {
-
-            Button resultButton = new Button();
-            resultButton.Name = "ID_" + bookingID;
-
-            Style bst = FindResource("CustomerSearchButton") as Style;
-            resultButton.Style = bst;
-            resultButton.ToolTip = "Click to Edit Booking Details.";
-
-            TextBlock tbCustomer = new TextBlock();
-            TextBlock tbMobilePhone = new TextBlock();
-            TextBlock tbVehicle = new TextBlock();
-            TextBlock tbScheduledStart = new TextBlock();
-            TextBlock tbScheduledReturn = new TextBlock();
-            TextBlock tbActualStart = new TextBlock();
-            TextBlock tbActualReturn = new TextBlock();
-           
-            //Get the style from the main app.xaml resource.
-            Style st = FindResource("CustomerSearchField") as Style;
-
-            tbCustomer.Style = st;
-            tbCustomer.Width = 250;
-            tbCustomer.Text = customer;
-            tbCustomer.Padding = new Thickness(15, 2, 15, 2);
-
-            tbMobilePhone.Style = st;
-            tbMobilePhone.Width = 250;
-            tbMobilePhone.Text = customer;
-            tbMobilePhone.Padding = new Thickness(15, 2, 15, 2);
-
-            tbVehicle.Style = st;
-            tbVehicle.Width = 250;
-            tbVehicle.Text = vehicle;
-            tbVehicle.Padding = new Thickness(15, 2, 15, 2);
-
-            tbScheduledStart.Style = st;
-            tbScheduledStart.Width = 175; 
-            tbScheduledStart.Text = dates;
-            tbScheduledStart.Padding = new Thickness(15, 2, 15, 2);
-
-            tbScheduledReturn.Style = st;
-            tbScheduledReturn.Width = 175;
-            tbScheduledReturn.Text = collected;
-            tbScheduledReturn.Padding = new Thickness(15, 2, 15, 2);
-
-            tbActualStart.Style = st;
-            tbActualStart.Width = 175;
-            tbActualStart.Text = dates;
-            tbActualStart.Padding = new Thickness(15, 2, 15, 2);
-
-            tbActualReturn.Style = st;
-            tbActualReturn.Width = 175;
-            tbActualReturn.Text = collected;
-            tbActualReturn.Padding = new Thickness(15, 2, 15, 2);
-
-            StackPanel stack = new StackPanel();
-            stack.Orientation = Orientation.Horizontal;
-            stack.Children.Add(tbCustomer);
-            stack.Children.Add(tbVehicle);
-     
-            resultButton.Content = stack;
-            resultButton.Click += resultButton_Click;
-
-            spHeaderRow.Visibility = Visibility.Visible;
-            spResultsPanel.Children.Add(resultButton);
-        }
-
+        
 
         // Method called when the user clicks one of the results onscreen, displayed as a button.
         void resultButton_Click(object sender, RoutedEventArgs e)
